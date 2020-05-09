@@ -20,5 +20,14 @@ define( 'FG_PICKUPS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'FG_PICKUPS_PLUGIN_DIR_NAME', basename( FG_PICKUPS_PLUGIN_DIR_PATH ) );
 define( 'FG_PICKUPS_PLUGIN_URL', plugins_url( FG_PICKUPS_PLUGIN_DIR_NAME ) );
 
+include 'includes/class-fg-pickups.php';
+include 'includes/class-fg-pickups-dependencies.php';
+include 'includes/class-fg-pickups-post-type.php';
+include 'includes/class-fg-pickups-shortcodes.php';
 
+include 'includes/pickups-post-type-fields/abstract-class-fg-pickups-post-type-fields.php';
+
+include 'includes/cmb2-custom-fields/class-fg-pickups-cmb2-field-dropdown.php';
+
+FG_Pickups::getInstance()->init();
 
