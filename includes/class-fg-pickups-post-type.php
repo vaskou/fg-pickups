@@ -163,6 +163,32 @@ class FG_Pickups_Post_Type {
 		return $this->_get_items();
 	}
 
+	/**
+	 * @param $id
+	 *
+	 * @return int[]|WP_Post[]
+	 */
+	public function get_item( $id ) {
+		$args = array(
+			'p'              => $id,
+			'posts_per_page' => 1
+		);
+
+		return $this->_get_items( $args );
+	}
+
+	public function get_pickup_image_id( $id ) {
+		$item = $this->get_item( $id );
+
+		if ( empty( $item[0] ) ) {
+			return false;
+		}
+
+		$pickup_id = $item[0]->ID;
+
+		return FG_Pickups_Specifications_Fields::getInstance()->getImageID( $pickup_id );
+	}
+
 
 	/**
 	 * @param $atts array
@@ -182,10 +208,12 @@ class FG_Pickups_Post_Type {
 	}
 
 	/**
+	 * @param array $atts
+	 *
 	 * @return int[]|WP_Post[]
 	 */
-	private function _get_items() {
-		$query = $this->_get_query();
+	private function _get_items( $atts = array() ) {
+		$query = $this->_get_query( $atts );
 
 		return $query->get_posts();
 	}

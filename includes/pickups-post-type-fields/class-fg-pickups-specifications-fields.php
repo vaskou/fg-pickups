@@ -30,4 +30,12 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 		);
 	}
 
+	public function getImage( $post_id ) {
+		return get_post_meta( $post_id, $this->getFieldMetaKeyPrefix() . 'image', true );
+	}
+
+	public function getImageID( $post_id ) {
+		return get_post_meta( $post_id, $this->getFieldMetaKeyPrefix() . 'image_id', true );
+	}
+
 }
