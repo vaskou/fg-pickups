@@ -2,24 +2,92 @@
 
 abstract class FG_Pickups_Post_Type_Fields {
 
-	protected $name;
-	protected $metabox_title;
-	protected $group_title;
-	protected $fields;
+	private $prefix_metabox_id = 'fg_pickups_';
+	private $prefix_field_id = 'fgp_';
 
+	protected $metabox_id = '';
+	protected $metabox_title = '';
+	protected $fields = array();
+	protected $enabled = true;
+
+	/**
+	 * @return string
+	 */
+	public function getPrefixMetaboxId() {
+		return $this->prefix_metabox_id;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPrefixFieldId() {
+		return $this->prefix_field_id;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getMetaboxId() {
+		return $this->metabox_id;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getMetaboxTitle() {
+		return $this->metabox_title;
+	}
+
+	/**
+	 * @return mixed
+	 */
 	public function getFields() {
 		return $this->fields;
 	}
 
-	abstract public function add_metaboxes( $post_type );
+	/**
+	 * @return bool
+	 */
+	public function isEnabled() {
+		return $this->enabled;
+	}
 
-	protected function _add_metabox( $post_type ) {
+	public function getPostMeta( $post_id ) {
+		$post_meta    = array();
+		$field_prefix = $this->getFieldMetaKeyPrefix();
+
+		foreach ( $this->fields as $key => $args ) {
+			$post_meta[ $this->metabox_id ][ $key ] = get_post_meta( $post_id, $field_prefix . $key, true );
+		}
+
+		return $post_meta;
+	}
+
+	public function getFieldMetaKeyPrefix() {
+		return $this->getPrefixFieldId() . $this->getMetaboxId() . '_';
+	}
+
+	public function getFieldLabel( $field ) {
+		return $this->fields[ $field ]['name'];
+	}
+
+	public function addMetaboxes( $post_type, $context = 'normal', $priority = 'high' ) {
+		if ( ! function_exists( 'new_cmb2_box' ) ) {
+			return;
+		}
+
+		$metabox = $this->_addMetabox( $post_type, $context, $priority );
+
+		$this->_addMetaboxFields( $metabox );
+	}
+
+	protected function _addMetabox( $post_type, $context = 'normal', $priority = 'high' ) {
 		return new_cmb2_box( array(
-			'id'           => 'fg_pickups_' . $this->name,
-			'title'        => $this->metabox_title,
+			'id'           => $this->getPrefixMetaboxId() . $this->getMetaboxId(),
+			'title'        => $this->getMetaboxTitle(),
 			'object_types' => array( $post_type ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
+			'context'      => $context,
+			'priority'     => $priority,
 			'show_names'   => true, // Show field names on the left
 		) );
 	}
@@ -27,63 +95,74 @@ abstract class FG_Pickups_Post_Type_Fields {
 	/**
 	 * @param $metabox CMB2
 	 */
-	protected function _add_metabox_fields( $metabox ) {
+	protected function _addMetaboxFields( $metabox ) {
 		if ( empty( $metabox ) ) {
 			return;
 		}
 
 		foreach ( $this->fields as $id => $values ) {
-			$metabox->add_field( array(
-				'id'         => 'fgp_' . $this->name . '_' . $id,
-				'name'       => $values['label'],
-				'type'       => $values['type'],
-				'repeatable' => ! empty( $values['repeatable'] ) ? $values['repeatable'] : false,
-			) );
+
+			$defaults = array(
+				'id' => $this->getFieldMetaKeyPrefix() . $id,
+			);
+
+			$args = wp_parse_args( $values, $defaults );
+
+			if ( 'group' == $values['type'] ) {
+				$this->_addMetaboxGroupField( $metabox, $args );
+			} else {
+				$metabox->add_field( $args );
+			}
+
 		}
 	}
 
 	/**
 	 * @param $metabox CMB2
 	 */
-	protected function _add_metabox_group_field( $metabox ) {
+	private function _addMetaboxGroupField( $metabox, $args ) {
 		if ( empty( $metabox ) ) {
 			return;
 		}
 
+		$group_title = $args['name'];
+
 		$group_id = $metabox->add_field( array(
-			'id'      => 'fgp_' . $this->name . '_group',
+			'id'      => $args['id'],
 			'type'    => 'group',
 			'options' => array(
-				'group_title'   => $this->group_title . ' {#}',
-				'add_button'    => sprintf( __( 'Add Another %s', 'cmb2' ), $this->group_title ),
-				'remove_button' => sprintf( __( 'Remove %s', 'cmb2' ), $this->group_title ),
+				'group_title'   => $group_title . ' {#}',
+				'add_button'    => sprintf( __( 'Add Another %s', 'fg-pickups' ), $group_title ),
+				'remove_button' => sprintf( __( 'Remove %s', 'fg-pickups' ), $group_title ),
 				'sortable'      => true,
 				// 'closed'         => true, // true to have the groups closed by default
 				// 'remove_confirm' => esc_html__( 'Are you sure you want to remove?', 'cmb2' ), // Performs confirmation before removing group.
 			),
 		) );
 
-		$this->_add_metabox_group_fields( $metabox, $group_id );
+		$this->_addMetaboxGroupFields( $metabox, $group_id, $args );
 	}
 
 	/**
 	 * @param $metabox CMB2
 	 * @param $group_id integer
 	 */
-	protected function _add_metabox_group_fields( $metabox, $group_id ) {
+	private function _addMetaboxGroupFields( $metabox, $group_id, $args ) {
 		if ( empty( $metabox ) ) {
 			return;
 		}
 
-		foreach ( $this->fields as $id => $values ) {
-			$metabox->add_group_field( $group_id, array(
-				'id'   => 'fgp_' . $this->name . '_' . $id,
-				'name' => $values['label'],
-				'type' => $values['type'],
-			) );
+		foreach ( $args['fields'] as $id => $values ) {
+
+			$defaults = array(
+				'id' => $id,
+			);
+
+			$args = wp_parse_args( $values, $defaults );
+
+			$metabox->add_group_field( $group_id, $args );
+
 		}
 
 	}
-
-
 }

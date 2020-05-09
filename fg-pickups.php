@@ -26,6 +26,7 @@ include 'includes/class-fg-pickups-post-type.php';
 include 'includes/class-fg-pickups-shortcodes.php';
 
 include 'includes/pickups-post-type-fields/abstract-class-fg-pickups-post-type-fields.php';
+include 'includes/pickups-post-type-fields/class-fg-pickups-specifications-fields.php';
 
 include 'includes/cmb2-custom-fields/class-fg-pickups-cmb2-field-dropdown.php';
 

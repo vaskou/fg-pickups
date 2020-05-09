@@ -17,7 +17,7 @@ class FG_Pickups_CMB2_Field_Dropdown {
 	}
 
 	private function __construct() {
-		$this->field_type = 'FG_Pickups_CMB2_Field_Dropdown';
+		$this->field_type = 'fg_pickups_cmb2_field_dropdown';
 		add_action( "cmb2_render_{$this->field_type}", array( $this, 'render' ), 10, 5 );
 //		add_action( "cmb2_sanitize_{$this->field_type}", array( $this, 'sanitize' ), 10, 2 );
 //		add_action( "cmb2_types_esc_{$this->field_type}", array( $this, 'escape_value' ), 10, 2 );

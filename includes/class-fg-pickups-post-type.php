@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die();
 
 class FG_Pickups_Post_Type {
 
-	const POST_TYPE_NAME = 'FG_Pickups';
+	const POST_TYPE_NAME = 'fg_pickups';
 	const TAXONOMY_NAME = 'fg_pickups_cat';
 	const SLUG = 'pickups';
 
@@ -24,7 +24,7 @@ class FG_Pickups_Post_Type {
 	public function init() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 //		add_action( 'init', array( $this, 'register_taxonomy' ) );
-//		add_action( 'cmb2_admin_init', array( $this, 'add_metaboxes' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'add_metaboxes' ) );
 		add_action( 'pre_get_posts', array( $this, 'custom_query' ) );
 	}
 
@@ -119,15 +119,30 @@ class FG_Pickups_Post_Type {
 	}
 
 	/**
+	 * Adds metaboxes
+	 */
+	public function add_metaboxes() {
+
+		FG_Pickups_Specifications_Fields::getInstance()->addMetaboxes( self::POST_TYPE_NAME );
+
+	}
+
+	/**
 	 * @param $query WP_Query
 	 */
 	public function custom_query( $query ) {
 		$is_shortcode = $query->get( 'is_shortcode' );
+		$is_post_in   = $query->get( 'post__in' );
+
 		if ( ! is_admin() && ( $query->is_main_query() || $is_shortcode ) ) {
 			if ( self::POST_TYPE_NAME == $query->get( 'post_type' ) ) {
 				$query->set( 'orderby', 'menu_order title' );
 				$query->set( 'order', 'ASC' );
 				$query->set( 'suppress_filters', 'true' );
+
+				if ( ! empty( $is_post_in ) ) {
+					$query->set( 'orderby', 'post__in' );
+				}
 			}
 		}
 	}
