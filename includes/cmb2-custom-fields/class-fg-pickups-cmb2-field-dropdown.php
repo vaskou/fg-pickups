@@ -8,7 +8,7 @@ class FG_Pickups_CMB2_Field_Dropdown {
 
 	private static $instance;
 
-	public static function get_instance() {
+	public static function instance() {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
@@ -32,7 +32,7 @@ class FG_Pickups_CMB2_Field_Dropdown {
 	 */
 	public function render( $field, $escaped_value, $object_id, $object_type, $field_type ) {
 
-		$pickups = FG_Pickups_Post_Type::getInstance()->get_items();
+		$pickups = FG_Pickups_Post_Type::instance()->get_items();
 		
 		$options = array( __( 'None', 'fg-pickups' ) );
 

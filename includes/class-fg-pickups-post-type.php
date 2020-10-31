@@ -11,21 +11,18 @@ class FG_Pickups_Post_Type {
 	private static $instance = null;
 
 	private function __construct() {
+		add_action( 'init', array( $this, 'register_post_type' ) );
+//		add_action( 'init', array( $this, 'register_taxonomy' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'add_metaboxes' ) );
+		add_action( 'pre_get_posts', array( $this, 'custom_query' ) );
 	}
 
-	public static function getInstance() {
+	public static function instance() {
 		if ( self::$instance == null ) {
 			self::$instance = new self();
 		}
 
 		return self::$instance;
-	}
-
-	public function init() {
-		add_action( 'init', array( $this, 'register_post_type' ) );
-//		add_action( 'init', array( $this, 'register_taxonomy' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'add_metaboxes' ) );
-		add_action( 'pre_get_posts', array( $this, 'custom_query' ) );
 	}
 
 	public function register_post_type() {
@@ -123,7 +120,7 @@ class FG_Pickups_Post_Type {
 	 */
 	public function add_metaboxes() {
 
-		FG_Pickups_Specifications_Fields::getInstance()->addMetaboxes( self::POST_TYPE_NAME );
+		FG_Pickups_Specifications_Fields::instance()->addMetaboxes( self::POST_TYPE_NAME );
 
 	}
 
@@ -186,7 +183,7 @@ class FG_Pickups_Post_Type {
 
 		$pickup_id = $item[0]->ID;
 
-		return FG_Pickups_Specifications_Fields::getInstance()->getImageID( $pickup_id );
+		return FG_Pickups_Specifications_Fields::instance()->getImageID( $pickup_id );
 	}
 
 
