@@ -4,7 +4,7 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 
 	private static $instance;
 
-	public static function getInstance() {
+	public static function instance() {
 		if ( self::$instance == null ) {
 			self::$instance = new self();
 		}
