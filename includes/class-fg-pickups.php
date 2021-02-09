@@ -6,6 +6,14 @@ class FG_Pickups {
 
 	private static $instance = null;
 
+	public static function instance() {
+		if ( self::$instance == null ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
+
 	/**
 	 * FG_Pickups constructor.
 	 */
@@ -16,12 +24,8 @@ class FG_Pickups {
 		FG_Pickups_Shortcodes::instance();
 	}
 
-	public static function instance() {
-		if ( self::$instance == null ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
+	public function on_plugins_loaded() {
+		load_plugin_textdomain( 'fg-features', false, FG_PICKUPS_PLUGIN_DIR_NAME . '/languages/' );
 	}
 
 }

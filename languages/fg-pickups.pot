@@ -1,0 +1,214 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FremeditiGuitars - Pickups\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-09 17:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.0; wp-5.6.1\n"
+"X-Domain: fg-pickups"
+
+#: includes/pickups-post-type-fields/abstract-class-fg-pickups-post-type-fields.php:135
+#, php-format
+msgid "Add Another %s"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:39
+msgid "Add New"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:38
+msgid "Add New FG Pickup"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:97
+msgid "Add New FG Pickup Category"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:92
+msgid "All FG Pickup Categories"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:37
+msgid "All FG Pickups"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:41
+msgid "Edit FG Pickup"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:95
+msgid "Edit FG Pickup Category"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:48
+msgid "Featured Image"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:67
+msgid "FG Pickup"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:34
+msgid "FG Pickup Archives"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:35
+msgid "FG Pickup Attributes"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:89
+#: includes/class-fg-pickups-post-type.php:99
+msgid "FG Pickup Categories"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:90
+msgid "FG Pickup Category"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:68
+msgid "FG Pickup Description"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:31
+msgctxt "FG Pickup Singular Name"
+msgid "FG Pickup"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:32
+#: includes/class-fg-pickups-post-type.php:33
+msgid "FG Pickups"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:30
+msgctxt "FG Pickups General Name"
+msgid "FG Pickups"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:54
+msgid "FG Pickups list"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:55
+msgid "FG Pickups list navigation"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:56
+msgid "Filter FG Pickups list"
+msgstr ""
+
+#. Name of the plugin
+msgid "FremeditiGuitars - Pickups"
+msgstr ""
+
+#. Description of the plugin
+msgid "FremeditiGuitars - Pickups Post Type"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:52
+msgid "Insert into FG Pickup"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:40
+msgid "New FG Pickup"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:98
+msgid "New FG Pickup Category Name"
+msgstr ""
+
+#: includes/cmb2-custom-fields/class-fg-pickups-cmb2-field-dropdown.php:37
+msgid "None"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:46
+msgid "Not found"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:47
+msgid "Not found in Trash"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:93
+msgid "Parent FG Pickup Category"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:94
+msgid "Parent FG Pickup Category:"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:36
+msgid "Parent FG Pickup:"
+msgstr ""
+
+#: includes/pickups-post-type-fields/abstract-class-fg-pickups-post-type-fields.php:136
+#, php-format
+msgid "Remove %s"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:50
+msgid "Remove Featured Image"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:45
+msgid "Search FG Pickup"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:91
+msgid "Search FG Pickup Categories"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:49
+msgid "Set Featured Image"
+msgstr ""
+
+#: includes/pickups-post-type-fields/class-fg-pickups-specifications-fields.php:17
+msgid "Specifications"
+msgstr ""
+
+#: includes/pickups-post-type-fields/class-fg-pickups-specifications-fields.php:20
+msgid "Specs Image"
+msgstr ""
+
+#: includes/class-fg-pickups-dependencies.php:48
+#, php-format
+msgid ""
+"The FremeditiGuitars - Pickups plugin requires <a href=\"%s\">CMB2</a> to be "
+"installed and active."
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:42
+msgid "Update FG Pickup"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:96
+msgid "Update FG Pickup Category"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:53
+msgid "Uploaded to this FG Pickup"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:51
+msgid "Use as Featured Image"
+msgstr ""
+
+#. Author of the plugin
+msgid "Vasilis Koutsopoulos"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:43
+msgid "View FG Pickup"
+msgstr ""
+
+#: includes/class-fg-pickups-post-type.php:44
+msgid "View FG Pickups"
+msgstr ""
