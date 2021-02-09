@@ -18,6 +18,8 @@ class FG_Pickups {
 	 * FG_Pickups constructor.
 	 */
 	private function __construct() {
+		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
+
 		FG_Pickups_Dependencies::instance();
 		FG_Pickups_Post_Type::instance();
 		FG_Pickups_CMB2_Field_Dropdown::instance();
@@ -25,7 +27,7 @@ class FG_Pickups {
 	}
 
 	public function on_plugins_loaded() {
-		load_plugin_textdomain( 'fg-features', false, FG_PICKUPS_PLUGIN_DIR_NAME . '/languages/' );
+		load_plugin_textdomain( 'fg-pickups', false, FG_PICKUPS_PLUGIN_DIR_NAME . '/languages/' );
 	}
 
 }
