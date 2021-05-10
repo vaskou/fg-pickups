@@ -27,6 +27,10 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 				),
 				'preview_size' => array( 200, 100 )
 			),
+			'video' => array(
+				'name' => __( 'Video', 'fg-pickups' ),
+				'type' => 'text',
+			),
 		);
 	}
 
@@ -36,6 +40,10 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 
 	public function getImageID( $post_id ) {
 		return get_post_meta( $post_id, $this->getFieldMetaKeyPrefix() . 'image_id', true );
+	}
+
+	public function getVideo( $post_id ) {
+		return get_post_meta( $post_id, $this->getFieldMetaKeyPrefix() . 'video', true );
 	}
 
 }
