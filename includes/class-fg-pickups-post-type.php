@@ -186,10 +186,17 @@ class FG_Pickups_Post_Type {
 		return FG_Pickups_Specifications_Fields::instance()->getImageID( $pickup_id );
 	}
 
+	public function get_price( $id ) {
+		return FG_Pickups_Specifications_Fields::instance()->getPrice( $id );
+	}
+
+	public function get_availability( $id ) {
+		return FG_Pickups_Specifications_Fields::instance()->getAvailability( $id );
+	}
+
 	public function get_video( $id ) {
 		return FG_Pickups_Specifications_Fields::instance()->getVideo( $id );
 	}
-
 
 	/**
 	 * @param $atts array

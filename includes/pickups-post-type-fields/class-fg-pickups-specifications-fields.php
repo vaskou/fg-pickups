@@ -16,7 +16,7 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 		$this->metabox_id    = 'specifications';
 		$this->metabox_title = __( 'Specifications', 'fg-pickups' );
 		$this->fields        = array(
-			'image' => array(
+			'image'        => array(
 				'name'         => __( 'Specs Image', 'fg-pickups' ),
 				'type'         => 'file',
 				'options'      => array(
@@ -27,7 +27,15 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 				),
 				'preview_size' => array( 200, 100 )
 			),
-			'video' => array(
+			'price'        => array(
+				'name' => __( 'Price', 'fg-pickups' ),
+				'type' => 'text',
+			),
+			'availability' => array(
+				'name' => __( 'Availability', 'fg-pickups' ),
+				'type' => 'text',
+			),
+			'video'        => array(
 				'name' => __( 'Video', 'fg-pickups' ),
 				'type' => 'text',
 			),
@@ -40,6 +48,14 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 
 	public function getImageID( $post_id ) {
 		return get_post_meta( $post_id, $this->getFieldMetaKeyPrefix() . 'image_id', true );
+	}
+
+	public function getPrice( $post_id ) {
+		return get_post_meta( $post_id, $this->getFieldMetaKeyPrefix() . 'price', true );
+	}
+
+	public function getAvailability( $post_id ) {
+		return get_post_meta( $post_id, $this->getFieldMetaKeyPrefix() . 'availability', true );
 	}
 
 	public function getVideo( $post_id ) {
