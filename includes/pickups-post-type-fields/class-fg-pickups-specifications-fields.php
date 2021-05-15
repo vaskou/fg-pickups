@@ -15,7 +15,7 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 	private function __construct() {
 		$this->metabox_id    = 'specifications';
 		$this->metabox_title = __( 'Specifications', 'fg-pickups' );
-		$this->fields        = array(
+		$this->fields        = apply_filters( 'fg_pickups_specifications_fields', array(
 			'image'        => array(
 				'name'         => __( 'Specs Image', 'fg-pickups' ),
 				'type'         => 'file',
@@ -29,7 +29,7 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 			),
 			'price'        => array(
 				'name' => __( 'Price', 'fg-pickups' ),
-				'type' => 'text',
+				'type' => apply_filters( 'fg_pickups_specifications_price_field_type', 'text' ),
 			),
 			'availability' => array(
 				'name' => __( 'Availability', 'fg-pickups' ),
@@ -39,7 +39,7 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 				'name' => __( 'Video', 'fg-pickups' ),
 				'type' => 'text',
 			),
-		);
+		) );
 	}
 
 	public function getImage( $post_id ) {
