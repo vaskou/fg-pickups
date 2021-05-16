@@ -28,8 +28,11 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 				'preview_size' => array( 200, 100 )
 			),
 			'price'        => array(
-				'name' => __( 'Price', 'fg-pickups' ),
-				'type' => apply_filters( 'fg_pickups_specifications_price_field_type', 'text' ),
+				'name'       => __( 'Price', 'fg-pickups' ),
+				'type'       => apply_filters( 'fg_pickups_specifications_price_field_type', 'text_small' ),
+				'attributes' => array(
+					'type' => apply_filters( 'fg_pickups_specifications_price_field_type', 'number' )
+				)
 			),
 			'availability' => array(
 				'name' => __( 'Availability', 'fg-pickups' ),
