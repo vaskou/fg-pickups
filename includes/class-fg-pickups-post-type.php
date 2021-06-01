@@ -187,7 +187,10 @@ class FG_Pickups_Post_Type {
 	}
 
 	public function get_price( $id ) {
-		return FG_Pickups_Specifications_Fields::instance()->getPrice( $id );
+
+		$price = FG_Pickups_Specifications_Fields::instance()->getPrice( $id );
+
+		return apply_filters( 'fg_pickups_post_type_get_price', $price, $id );
 	}
 
 	public function get_availability( $id ) {

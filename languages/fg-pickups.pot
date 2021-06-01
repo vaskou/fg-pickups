@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FremeditiGuitars - Pickups\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-09 17:35+0000\n"
+"POT-Creation-Date: 2021-06-01 16:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -39,6 +39,10 @@ msgstr ""
 
 #: includes/class-fg-pickups-post-type.php:37
 msgid "All FG Pickups"
+msgstr ""
+
+#: includes/pickups-post-type-fields/class-fg-pickups-specifications-fields.php:38
+msgid "Availability"
 msgstr ""
 
 #: includes/class-fg-pickups-post-type.php:41
@@ -149,6 +153,10 @@ msgstr ""
 msgid "Parent FG Pickup:"
 msgstr ""
 
+#: includes/pickups-post-type-fields/class-fg-pickups-specifications-fields.php:31
+msgid "Price"
+msgstr ""
+
 #: includes/pickups-post-type-fields/abstract-class-fg-pickups-post-type-fields.php:136
 #, php-format
 msgid "Remove %s"
@@ -203,6 +211,10 @@ msgstr ""
 
 #. Author of the plugin
 msgid "Vasilis Koutsopoulos"
+msgstr ""
+
+#: includes/pickups-post-type-fields/class-fg-pickups-specifications-fields.php:42
+msgid "Video"
 msgstr ""
 
 #: includes/class-fg-pickups-post-type.php:43
