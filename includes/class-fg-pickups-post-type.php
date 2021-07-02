@@ -174,6 +174,18 @@ class FG_Pickups_Post_Type {
 		return $this->_get_items( $args );
 	}
 
+	public function get_pickup_single_image_id( $id ) {
+		$item = $this->get_item( $id );
+
+		if ( empty( $item[0] ) ) {
+			return false;
+		}
+
+		$pickup_id = $item[0]->ID;
+
+		return FG_Pickups_Specifications_Fields::instance()->getSingleImageID( $pickup_id );
+	}
+
 	public function get_pickup_image_id( $id ) {
 		$item = $this->get_item( $id );
 
@@ -193,8 +205,20 @@ class FG_Pickups_Post_Type {
 		return apply_filters( 'fg_pickups_post_type_get_price', $price, $id );
 	}
 
+	public function get_price_set( $id ) {
+
+		$price = FG_Pickups_Specifications_Fields::instance()->getPriceSet( $id );
+
+		return apply_filters( 'fg_pickups_post_type_get_price_set', $price, $id );
+	}
+
+
 	public function get_availability( $id ) {
 		return FG_Pickups_Specifications_Fields::instance()->getAvailability( $id );
+	}
+
+	public function get_notes( $id ) {
+		return FG_Pickups_Specifications_Fields::instance()->getNotes( $id );
 	}
 
 	public function get_video( $id ) {
