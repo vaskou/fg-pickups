@@ -217,6 +217,10 @@ class FG_Pickups_Post_Type {
 		return FG_Pickups_Specifications_Fields::instance()->getAvailability( $id );
 	}
 
+	public function get_prices_grid_visibility( $id ) {
+		return FG_Pickups_Specifications_Fields::instance()->getPricesGridVisibility( $id );
+	}
+
 	public function get_notes( $id ) {
 		return FG_Pickups_Specifications_Fields::instance()->getNotes( $id );
 	}

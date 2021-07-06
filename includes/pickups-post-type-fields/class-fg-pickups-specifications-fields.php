@@ -16,7 +16,7 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 		$this->metabox_id    = 'specifications';
 		$this->metabox_title = __( 'Specifications', 'fg-pickups' );
 		$this->fields        = apply_filters( 'fg_pickups_specifications_fields', array(
-			'single_image' => array(
+			'single_image'           => array(
 				'name'         => __( 'Image', 'fg-pickups' ),
 				'type'         => 'file',
 				'options'      => array(
@@ -27,7 +27,7 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 				),
 				'preview_size' => array( 200, 100 )
 			),
-			'image'        => array(
+			'image'                  => array(
 				'name'         => __( 'Specs Image', 'fg-pickups' ),
 				'type'         => 'file',
 				'options'      => array(
@@ -38,29 +38,38 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 				),
 				'preview_size' => array( 200, 100 )
 			),
-			'price'        => array(
+			'price'                  => array(
 				'name'       => __( 'Price for single', 'fg-pickups' ),
 				'type'       => apply_filters( 'fg_pickups_specifications_price_field_type', 'text_small' ),
 				'attributes' => array(
 					'type' => apply_filters( 'fg_pickups_specifications_price_field_type', 'number' )
 				)
 			),
-			'price_set'    => array(
+			'price_set'              => array(
 				'name'       => __( 'Price for set', 'fg-pickups' ),
 				'type'       => apply_filters( 'fg_pickups_specifications_price_set_field_type', 'text_small' ),
 				'attributes' => array(
 					'type' => apply_filters( 'fg_pickups_specifications_price_set_field_type', 'number' )
 				)
 			),
-			'availability' => array(
+			'prices_grid_visibility' => array(
+				'name'        => __( 'Hide Prices from Grid', 'fg-pickups' ),
+				'type'        => 'multicheck',
+				'description' => __( 'Check the prices that you want to hide from grid', 'fg-pickups' ),
+				'options'     => array(
+					'price'     => __( 'Price for single', 'fg-pickups' ),
+					'price_set' => __( 'Price for set', 'fg-pickups' ),
+				),
+			),
+			'availability'           => array(
 				'name' => __( 'Availability', 'fg-pickups' ),
 				'type' => 'text',
 			),
-			'notes'        => array(
+			'notes'                  => array(
 				'name' => __( 'Notes', 'fg-pickups' ),
 				'type' => 'text',
 			),
-			'video'        => array(
+			'video'                  => array(
 				'name' => __( 'Video', 'fg-pickups' ),
 				'type' => 'text',
 			),
@@ -93,6 +102,12 @@ class FG_Pickups_Specifications_Fields extends FG_Pickups_Post_Type_Fields {
 
 	public function getAvailability( $post_id ) {
 		return get_post_meta( $post_id, $this->getFieldMetaKeyPrefix() . 'availability', true );
+	}
+
+	public function getPricesGridVisibility( $post_id ) {
+		$prices_grid_visibility = get_post_meta( $post_id, $this->getFieldMetaKeyPrefix() . 'prices_grid_visibility', true );
+
+		return is_array( $prices_grid_visibility ) && ! empty( $prices_grid_visibility ) ? $prices_grid_visibility : array();
 	}
 
 	public function getNotes( $post_id ) {
