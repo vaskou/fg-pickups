@@ -135,7 +135,7 @@ class FG_Pickups_Post_Type {
 			if ( self::POST_TYPE_NAME == $query->get( 'post_type' ) ) {
 				$query->set( 'orderby', 'menu_order title' );
 				$query->set( 'order', 'ASC' );
-				$query->set( 'suppress_filters', 'true' );
+//				$query->set( 'suppress_filters', 'true' ); //wpml incompatible
 
 				if ( ! empty( $is_post_in ) ) {
 					$query->set( 'orderby', 'post__in' );
